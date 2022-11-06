@@ -1,27 +1,6 @@
 ---
-- name: import gpg.
-  rpm_key:
-    key: "{{ item }}"
-    state: present
-  loop: "{{ rpm_gpg_keys }}"
-
-- name: intialize repo
-  get_url:
-    url: "{{ enpass_repo_url }}"
-    dest: /etc/yum.repos.d/enpass.repo
-    mode: '0644'
-
-- name: Install the required packages
-  yum:
-    name: "{{ required_packages | union(optional_packages) }}"
-    state: present
-
-- name: restart the required services
-  service:
-    name: "{{ item }}"
-    state: restarted
-  loop: "{{ services }}"
-
+- name: install packages
+  include_tasks: packages.yaml
  
 - name: include oh my zsh tasks
   include_tasks: oh-my-zsh.yaml
