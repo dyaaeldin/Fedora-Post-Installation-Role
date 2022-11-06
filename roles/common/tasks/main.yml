@@ -23,38 +23,6 @@
   loop: "{{ services }}"
 
  
-- name: Check if .oh-my-zsh exists
-  stat:
-    path: ~/.oh-my-zsh
-  register: stat_oh_my_zsh_result
-  become: False 
-
-- name: Cloning  oh-my-zsh
-  git:
-    repo: https://github.com/ohmyzsh/ohmyzsh.git
-    dest: ~/.oh-my-zsh
-  when: not stat_oh_my_zsh_result.stat.exists
-  become: False
-
-- name: Check if custom plugins exists
-  stat:
-    path: ~/.oh-my-zsh
-  register: stat_custom_result
-  become: False 
-
-- name: Download auto suggestion git repo
-  git:
-    repo: "https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions"
-    dest: "~/.oh-my-zsh/custom" 
-  when: not stat_custom_result.stat.exists
-  become: False
-
-- name: copy the required files
-  copy:  
-    src: vimrc
-    dest: "~/.{{item}}"
-  loop:
-    - "vimrc"
-    - "zshrc"
-  become: False
-
+- name: include oh my zsh tasks
+  include_tasks: oh-my-zsh.yaml
+  tags: oh-my-zsh 
