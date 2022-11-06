@@ -1,0 +1,23 @@
+---
+rpm_gpg_keys:
+  - https://dl.google.com/linux/linux_signing_key.pub
+  - https://packages.microsoft.com/keys/microsoft.asc
+  - https://zoom.us/linux/download/pubkey
+
+enpass_repo_url: "https://yum.enpass.io/enpass-yum.repo"
+required_packages:
+  - "@virtualization"
+  - "https://az764295.vo.msecnd.net/stable/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/code-1.73.0-1667318873.el7.x86_64.rpm"
+  - "https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
+  - "https://packages.microsoft.com/yumrepos/ms-teams/teams-1.5.00.23861-1.x86_64.rpm"
+  - "https://cdn.zoom.us/prod/5.12.2.4816/zoom_x86_64.rpm"
+  - "zsh"
+  - "util-linux-user"
+  - "enpass"
+  - "virt-manager"
+  - "virt-viewer"
+
+services:
+  - "libvirtd"
+
+user: "dyaa"

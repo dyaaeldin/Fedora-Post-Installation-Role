@@ -1,0 +1,12 @@
+all:
+  children:
+    ungrouped:
+      hosts:
+        fedora:
+          ansible_host: 192.168.122.84
+          ansible_port: 22
+          ansible_user: dyaa
+          ansible_become_user: root
+          ansible_become_method: sudo
+          
+

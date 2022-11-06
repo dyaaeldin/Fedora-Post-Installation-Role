@@ -1,0 +1,18 @@
+---
+- hosts: fedora
+  become: True
+  become_user: root
+  become_method: sudo 
+  pre_tasks:
+    - name: initialize the system
+      debug: 
+        msg: |
+          Inializing the os
+  roles:
+    - role: common
+    - role: secure
+  post_tasks:
+    - name: System intialized
+      debug:
+        msg: |
+          System initalized successfully
