@@ -1,5 +1,5 @@
 ---
-- hosts: fedora
+- hosts: localhost
   become: True
   become_user: root
   become_method: sudo 
