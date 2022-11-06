@@ -36,11 +36,17 @@
   when: not stat_oh_my_zsh_result.stat.exists
   become: False
 
+- name: Check if custom plugins exists
+  stat:
+    path: ~/.oh-my-zsh
+  register: stat_custom_result
+  become: False 
+
 - name: Download auto suggestion git repo
   git:
     repo: "https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions"
     dest: "~/.oh-my-zsh/custom" 
-  when: not stat_oh_my_zsh_result.stat.exists
+  when: not stat_custom_result.stat.exists
   become: False
 
 - name: copy the required files
