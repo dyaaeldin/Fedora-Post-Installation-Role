@@ -38,17 +38,15 @@
 
 - name: Download auto suggestion git repo
   git:
-    repo: "https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions"
-    dest: "/home/{{user}}/.oh-my-zsh/custom" 
+    repo: "https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions"
+    dest: "~/.oh-my-zsh/custom" 
   when: not stat_oh_my_zsh_result.stat.exists
   become: False
 
 - name: copy the required files
   copy:  
     src: vimrc
-    dest: "/home/{{user}}/.{{item}}"
-    owner: "{{ user }}"
-    group: "{{ user }}"
+    dest: "~/.{{item}}"
   loop:
     - "vimrc"
     - "zshrc"

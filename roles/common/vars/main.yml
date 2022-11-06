@@ -16,6 +16,7 @@ required_packages:
   - "enpass"
   - "virt-manager"
   - "virt-viewer"
+  - "vim"
 
 services:
   - "libvirtd"
