@@ -11,7 +11,7 @@
     dest: /etc/yum.repos.d/enpass.repo
     mode: '0644'
 
-- name: Download the required packages
+- name: Install the required packages
   yum:
     name: "{{ required_packages | union(optional_packages) }}"
     state: present
