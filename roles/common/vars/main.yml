@@ -17,8 +17,8 @@ required_packages:
   - "virt-manager"
   - "virt-viewer"
   - "vim"
+  - "terminator"
 
 services:
   - "libvirtd"
 
-user: "dyaa"
